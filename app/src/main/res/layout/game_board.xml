@@ -84,7 +84,6 @@
     </RelativeLayout>
     <!-- Row -->
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/row2"
         android:layout_width="207dp"
         android:layout_height="15dp"
@@ -98,14 +97,13 @@
             android:layout_alignParentStart="true"
             android:background="@drawable/blank_circle"
             />
+
         <RelativeLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/blank_circle21"
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_centerInParent="true"
-            android:background="@drawable/blank_circle"
-            />
+            android:background="@drawable/blank_circle" />
         <RelativeLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/blank_circle22"
