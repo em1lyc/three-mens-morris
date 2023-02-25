@@ -6,32 +6,32 @@ import java.util.logging.Handler;
 
 public class Game {
     // Variables
-    private int[][] gameboard;
+    private static int[][] gameBoard;
 
-    int handlerInit;
+    public static int currentPlayer;
 
     // Constructor
     Game(Handler mainHandler){
-        handlerInit = 0;
+        int handlerInit = 0;
         initializeGame();
     }
 
     // Initialize the game features and board
     private void initializeGame(){
         // Dimensions
-        int board_width = 5;
-        int board_height = 5;
+        int board_width = 3;
+        int board_height = 3;
 
-        gameboard = new int[board_width][board_height];
+        gameBoard = new int[board_width][board_height];
         for (int i = 0; i < board_width; i ++){
             for (int j = 0; j < board_height; j ++){
-                gameboard[i][j] = 0;
+                gameBoard[i][j] = 0;
             }
         }
     }
 
     // Use threading to pause between moves
-    public void pauseTime(){
+    public static void pauseTime(){
         try{
             Thread.sleep(1000);
         } catch (InterruptedException e){
@@ -40,12 +40,12 @@ public class Game {
     }
 
     // Get the game board
-    public int[][] getGameboard(){
-        return gameboard;
+    public static int[][] get_gameBoard(){
+        return gameBoard;
     }
 
     // Move pieces around the board
-    public void movePiece(Positions oldPos, Positions newPos){
+    public static void movePiece(Positions oldPos, Positions newPos){
         pauseTime();
 
         // Get the positions from the current to the next one chosen
@@ -56,11 +56,11 @@ public class Game {
 
         // Check whether it's a new emplacement
         if (oldX != -1){
-            gameboard[oldX][oldX] = 0; // Make it unoccupied
+            gameBoard[oldX][oldX] = 0; // Make it unoccupied
         }
 
         // Set the player's piece at the new location
-        gameboard[newX][newY] = newPos.getPlayerID();
+        gameBoard[newX][newY] = newPos.getPlayerID();
 
         // Now, this new position become the old or current one
         oldPos.setPosX(newX);

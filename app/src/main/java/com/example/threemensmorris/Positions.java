@@ -1,5 +1,17 @@
 package com.example.threemensmorris;
 
+/*
+Positions Class
+---------------
+
+
+
+
+ */
+
+
+
+
 public class Positions {
     // Variables
     private int playerID;
