@@ -1,53 +1,34 @@
-package com.example.threemensmorris;
-
 /*
-Positions Class
----------------
-
-
-
-
+            The Position Class
+            ------------------
+     This class will hold all the information about the location of each piece
+     the player has on the game board.
  */
 
-
-
+package com.example.threemensmorris;
 
 public class Positions {
-    // Variables
-    private int playerID;
     private int posX;
     private int posY;
 
-    // Constructor
-    Positions(int player_ID, int x, int y){
-        playerID = player_ID;
+    public Positions(int x, int y) {
         posX = x;
         posY = y;
     }
 
-    // Setters
-    public void setPlayerID(int player_ID){
-        this.playerID = player_ID;
+    public int getPosX() {
+        return posX;
     }
-
-    public void setPosX(int posX){
+    public void setPosX(int posX) {
         this.posX = posX;
     }
 
-    public void setPosY(int posY){
+    public int getPosY() {
+        return posY;
+    }
+    public void setPosY(int posY) {
         this.posY = posY;
     }
 
-    // Getters
-    int getPlayerID(){
-        return playerID;
-    }
-
-    int getPosX(){
-        return posX;
-    }
-
-    int getPosY(){
-        return posY;
-    }
 }
+

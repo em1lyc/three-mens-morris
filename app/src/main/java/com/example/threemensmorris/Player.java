@@ -1,66 +1,134 @@
-package com.example.threemensmorris;
+package com.example.threemensmorris;/*
+                Player class
+                ------------
+      This class will have all the possible function related to how the user
+      can interact with the interface while the game is running.
+ */
 
-import java.util.Random;
+import androidx.annotation.NonNull;
+
+import com.example.threemensmorris.Positions;
+
 
 public class Player {
-    // Set variables
-    private String username;
-    private String player_image;  // For the image
-    private Positions[] pieces = null; // This is for the player.
-    private int numberOfPieces = 0;
+    private String player_name;
+    private String player_icon;
+    public int player_ID;
+    public int numOfPieces;
+    private final int score;
+    private final Positions[] pieces = new Positions[3];
 
-    // Track the rows used
-    int[][] playerBoard;
+    Player(){
+        this.score = 0;
+        this.numOfPieces = 0;
+        setPlayerPieces();
+    }
 
-    // Functions
-    // Initialize the locations to zero
-    public void setPlayerBoard(){
-        playerBoard = new int[3][3];
+
+    @NonNull
+    @Override
+    public String toString(){
+        return this.player_name;
+    }
+
+    // Set up player's information
+    public void setInformation(String player_name, String player_icon, int player_ID){
+        this.player_name = player_name;
+        this.player_icon = player_icon;
+        this.player_ID = player_ID;
+    }
+
+    /*
+    Method: setPlayer_name
+            Setter for the player's name
+     */
+    public void setPlayer_name(String player_name){
+        this.player_name = player_name;
+    }
+
+//    /*
+//    Method: getPlayer_name
+//            Getter for the player's name
+//     */
+//    public String getPlayer_name(){
+//        return player_name;
+//    }
+
+    /*
+    Method: setPlayer_icon
+            Getter for the player's icon
+     */
+    public void setPlayer_icon(String player_icon){
+        this.player_icon = player_icon;
+    }
+
+    /*
+    Method: getPlayer_icon
+            Getter for the player's icon
+     */
+    public String getPlayer_icon(){
+        return player_name;
+    }
+
+    /*
+    Method: setPlayer_ID
+            Setter for the player's id
+     */
+    public void setPlayer_ID(int player_id){
+        this.player_ID = player_id;
+    }
+
+    /*
+    Method: getPlayer_name
+            Getter for the player's id
+     */
+    public int getPlayer_ID(){
+        return player_ID;
+    }
+
+    /*
+    Method: getScore
+            Return the player's score
+     */
+    public int getScore(){
+        return score;
+    }
+
+
+    /*
+        Method: SetPlayerPieces
+            Set the pieces ready for the game. By default, we can set them
+            to (-1, -1) just to mean that they aren't on the board yet.
+     */
+
+    public void setPlayerPieces(){
+        Positions locations;
         for (int i = 0; i < 3; i ++){
-            for (int j = 0; j < 3; j ++){
-                playerBoard[i][j] = 0;
-            }
+            locations = new Positions(-1, -1);
+            pieces[i] = locations;
         }
     }
 
-    // Place the piece on the board
-    private void placePiece(){
-        pieces[numberOfPieces] = randomLocation();
-        Game.movePiece(new Positions(Game.currentPlayer, -1, -1), pieces[numberOfPieces]);
-        numberOfPieces ++;
+    /*
+        Method: getPiece
+            This returns the position of a piece on the board
+     */
+    public Positions getPiece(int pieceNumber){
+        return pieces[pieceNumber];
     }
 
+    // Place a piece in the board
+    public void placePiece(int pieceNumber, int x, int y){
+        pieces[pieceNumber].setPosX(x);
+        pieces[pieceNumber].setPosY(y);
+    }
 
-    // Player moves the pieces
-    public void makeMove(){
-        // Check if we didn't use all the 3 pieces yet
-        if (numberOfPieces < 3){
-            if (pieces == null){
-                pieces = new Positions[3];
-            }
-            placePiece();
-            return;
+    // Display the positions of each piece
+    public void infos(){
+        System.out.println("There are " + numOfPieces + " on board for " + player_name);
+        for (int i = 0; i < pieces.length; i ++){
+            System.out.println("Piece [" + i + "] = (" + pieces[i].getPosX() + ", " + pieces[i].getPosY() + ")");
         }
-
-        // If we move a random piece to a random location
-        int pieceNum = new Random().nextInt(3);
-        Positions location = randomLocation();
-
-        // Move accordingly
-        Game.movePiece(pieces[pieceNum], location);
     }
-
-    // Helper to generate a random piece
-    private Positions randomLocation(){
-        int posX = new Random().nextInt(3);
-        int posY = new Random().nextInt(3);
-
-        // Check if the point in the board is free (without) any pieces
-        while(!((Game.get_gameBoard()[posX][posY]) == 0)){
-            posX = new Random().nextInt(3);
-            posY = new Random().nextInt(3);
-        }
-        return new Positions(Game.currentPlayer, posX, posY);
-    }
-
 }
+
