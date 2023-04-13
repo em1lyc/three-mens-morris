@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EDEDED"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Top Text -->
+    <include
+        layout="@layout/game_board"/>
+
+    <TextView
+        android:id="@+id/top_text"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="68dp"
+        android:elegantTextHeight="true"
+        android:fontFamily="@font/bebas_neue"
+        android:text="@string/top_text1"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!-- Avatar 2's background icon -->
+    <View
+        android:id="@+id/player2_background"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/player2_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.295"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+    <!-- Avatar 2's Text Label -->
+    <TextView
+        android:id="@+id/player2_text_label"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:fontFamily="@font/bebas_neue"
+        android:text="@string/player2_text"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@id/player2_background"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/player2_background" />
+
+    <!-- Avatar 2's Score Label -->
+    <TextView
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/player2_score_label"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@id/player2_background"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/player2_text_label" />
+
+    <!-- Avatar 1's background icon -->
+    <View
+        android:id="@+id/player1_background"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/player1_background"
+        android:paddingTop="100dp"
+        app:layout_constraintBottom_toTopOf="@id/player2_background"
+        app:layout_constraintHorizontal_bias="0.295"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+    <!-- Avatar 1's Text Label -->
+    <TextView
+        android:id="@+id/player1_text_label"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:fontFamily="@font/bebas_neue"
+        android:text="@string/player1_text"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@id/player1_background"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/player1_background" />
+    <!-- Avatar 1's Score Label -->
+    <TextView
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/player1_score_label"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@id/player1_background"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/player1_text_label" />
+</androidx.constraintlayout.widget.ConstraintLayout>
