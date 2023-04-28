@@ -1,12 +1,14 @@
 package com.example.threemensmorris;
 
 import android.os.Handler;
-import android.os.Message;
+
 import java.util.Scanner;
 
 public class Game {
     // Variables
     private static int[][] gameBoard;
+
+    int view = R.layout.overall_layout;
     private static Player[] players;
     private final int WIDTH = 3;
     private final int HEIGHT = 3;
@@ -17,7 +19,8 @@ public class Game {
 
 
     // Constructor
-    Game(){
+    Game(int init_view){
+        view = init_view;
         initGameBoard();
     }
 
@@ -153,6 +156,7 @@ public class Game {
 
             // Set the new position
             gameBoard[x][y] = player.player_ID;
+
             player.placePiece(pieceNumber, x ,y);
             player.numOfPieces ++;
             return true;

@@ -5,9 +5,12 @@
     android:background="#EDEDED"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <!-- Top Text -->
     <include
-        layout="@layout/game_board"/>
+        layout="@layout/game_board"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <TextView
         android:id="@+id/top_text"

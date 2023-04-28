@@ -11,7 +11,7 @@ package com.example.threemensmorris;
 public class TestCode {
     public static void main(String[] args) {
 
-        Game newGame = new Game();
+        Game newGame = new Game(R.layout.overall_layout);
         newGame.run();
     }
 }
