@@ -5,7 +5,7 @@
      the player has on the game board.
  */
 
-package com.example.threemensmorris;
+package com.meghana.mythreemensmorris;
 
 public class Positions {
     private int posX;

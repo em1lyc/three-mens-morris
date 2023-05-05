@@ -1,3 +1,5 @@
+
+package com.meghana.mythreemensmorris;
 import java.util.*;
 
 /* To call choose_move, need to make a hashmap of int,int where keys are 0-8 representing grid:
@@ -77,41 +79,44 @@ public class PossibleMoves {
                   map.put(col+((row-1)*3),player); 
                   currset.add(map);
                }
-               if(row < 2 && col < 2 && gameboard.get(col+1+((row+1)*3)) == 0) { //right bottom diagonal
-                  HashMap<Integer,Integer> map = new HashMap<Integer,Integer>(); 
-                  for(int elem: gameboard.keySet()) { //make a copy
-                     map.put(elem, gameboard.get(elem)); 
+               //only in four corners and middle can you move diagonally
+               if((row == 0 && col == 0) || (row == 2 && col == 0) || (row ==0 && col ==2) || (row ==2 && col==2) || (row ==1 && col ==1)) {
+                  if (row < 2 && col < 2 && gameboard.get(col + 1 + ((row + 1) * 3)) == 0) { //right bottom diagonal
+                     HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+                     for (int elem : gameboard.keySet()) { //make a copy
+                        map.put(elem, gameboard.get(elem));
+                     }
+                     map.put(index, 0);
+                     map.put(col + 1 + ((row + 1) * 3), player);
+                     currset.add(map);
                   }
-                  map.put(index,0); 
-                  map.put(col+1+((row+1)*3),player); 
-                  currset.add(map);
-               }
-               if(row > 0 && col > 0 && gameboard.get(col-1+((row-1)*3)) == 0) { //left top diagonal
-                  HashMap<Integer,Integer> map = new HashMap<Integer,Integer>(); 
-                  for(int elem: gameboard.keySet()) { //make a copy
-                     map.put(elem, gameboard.get(elem)); 
+                  if (row > 0 && col > 0 && gameboard.get(col - 1 + ((row - 1) * 3)) == 0) { //left top diagonal
+                     HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+                     for (int elem : gameboard.keySet()) { //make a copy
+                        map.put(elem, gameboard.get(elem));
+                     }
+                     map.put(index, 0);
+                     map.put(col - 1 + ((row - 1) * 3), player);
+                     currset.add(map);
                   }
-                  map.put(index,0); 
-                  map.put(col-1+((row-1)*3),player); 
-                  currset.add(map);
-               }
-               if(row > 0 && col < 2 && gameboard.get(col+1+((row-1)*3)) == 0) { //left bottom diagonal
-                  HashMap<Integer,Integer> map = new HashMap<Integer,Integer>(); 
-                  for(int elem: gameboard.keySet()) { //make a copy
-                     map.put(elem, gameboard.get(elem)); 
+                  if (row > 0 && col < 2 && gameboard.get(col + 1 + ((row - 1) * 3)) == 0) { //left bottom diagonal
+                     HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+                     for (int elem : gameboard.keySet()) { //make a copy
+                        map.put(elem, gameboard.get(elem));
+                     }
+                     map.put(index, 0);
+                     map.put(col + 1 + ((row - 1) * 3), player);
+                     currset.add(map);
                   }
-                  map.put(index,0); 
-                  map.put(col+1+((row-1)*3),player); 
-                  currset.add(map);
-               }
-               if(row < 2 && col > 0 && gameboard.get(col-1+((row+1)*3)) == 0) { //right top diagonal
-                  HashMap<Integer,Integer> map = new HashMap<Integer,Integer>(); 
-                  for(int elem: gameboard.keySet()) { //make a copy
-                     map.put(elem, gameboard.get(elem)); 
+                  if (row < 2 && col > 0 && gameboard.get(col - 1 + ((row + 1) * 3)) == 0) { //right top diagonal
+                     HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+                     for (int elem : gameboard.keySet()) { //make a copy
+                        map.put(elem, gameboard.get(elem));
+                     }
+                     map.put(index, 0);
+                     map.put(col - 1 + ((row + 1) * 3), player);
+                     currset.add(map);
                   }
-                  map.put(index,0); 
-                  map.put(col-1+((row+1)*3),player); 
-                  currset.add(map);
                }
             }
          }
