@@ -2,7 +2,7 @@
 
 Introduction: Tic-Tac-Toe is a universally-known game that people regularly play. However, it’s easy to get bored of the simplicity of the game and how easy it is to draw. Three Men’s Morris is a longer and more interesting two-player game with more strategy, which we hope to implement in a mobile application. This game also has a significant amount of history which we hope to preserve.
 
-![Samsung Galaxy S21 Ultra](https://user-images.githubusercontent.com/69011770/236555375-b4fc745b-0f9b-43c5-93d3-e0f5a5b5acd2.png) {:height="36px" width="36px"} ![Samsung Galaxy S21 Ultra (1)](https://user-images.githubusercontent.com/69011770/236555395-e2475007-5be3-49ef-a9c4-fa18fde257ea.png) {:height="36px" width="36px"}
+![Samsung Galaxy S21 Ultra](https://user-images.githubusercontent.com/69011770/236555375-b4fc745b-0f9b-43c5-93d3-e0f5a5b5acd2.png) {:height="20%" width="20%"} ![Samsung Galaxy S21 Ultra (1)](https://user-images.githubusercontent.com/69011770/236555395-e2475007-5be3-49ef-a9c4-fa18fde257ea.png) {:height="20%" width="20%"}
 
 Frontend Components: The frontend is implemented using Android Studio and is responsible for the following:
 - Keeping track of each user’s game states in a multiplayer game
