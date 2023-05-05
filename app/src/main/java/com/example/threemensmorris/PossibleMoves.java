@@ -1,3 +1,5 @@
+
+package com.meghana.mythreemensmorris;
 import java.util.*;
 
 /* To call choose_move, need to make a hashmap of int,int where keys are 0-8 representing grid:

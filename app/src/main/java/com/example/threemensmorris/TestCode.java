@@ -1,4 +1,4 @@
-package com.example.threemensmorris;
+package com.meghana.mythreemensmorris;
 
 /*
                     TestCode
@@ -11,7 +11,7 @@ package com.example.threemensmorris;
 public class TestCode {
     public static void main(String[] args) {
 
-        Game newGame = new Game();
-        newGame.run();
+//        Game newGame = new Game();
+//        newGame.run();
     }
 }

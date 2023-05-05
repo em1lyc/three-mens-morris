@@ -1,4 +1,4 @@
-package com.example.threemensmorris;
+package com.meghana.mythreemensmorris;
 
 import android.os.Handler;
 import android.os.Message;
@@ -6,12 +6,13 @@ import java.util.Scanner;
 
 public class Game {
     // Variables
-    private static int[][] gameBoard;
-    private static Player[] players;
+    public static int[][] gameBoard; //make it public so after each move, you can update gameboard layout
+    public static Player[] players;
     private final int WIDTH = 3;
     private final int HEIGHT = 3;
     private final int EMPTY = 0;
-
+    private int TURN = 0;
+    public boolean haswinner = false;
     private static Handler mainHandler;
     public static int handlerInit;
 
@@ -19,15 +20,23 @@ public class Game {
     // Constructor
     Game(){
         initGameBoard();
+        TURN = 0;
     }
 
     // Run method
-    public void run(){
+
+    public void run(String name1, String name2){
+        if(name1.equals("")) {
+            name1 = "Player1";
+        }
+        if(name2.equals("")) {
+            name2 = "Player2";
+        }
         // Set players
         Player player1 = new Player();
-        player1.setInformation("Daiki", "X", 1);
+        player1.setInformation(name1, "X", 1);
         Player player2 = new Player();
-        player2.setInformation("Ryota", "O", 2);
+        player2.setInformation(name2, "O", 2);
 
         players = new Player[2];
         players[0] = player1;
@@ -143,17 +152,76 @@ public class Game {
             Make the player move on the game board based
             on their player ID (or Icon in future changes)
      */
-    public boolean makeMove(Player player, int pieceNumber, int x, int y){
+    public boolean makeMoveMain(Player player, int old_x, int old_y, int x, int y){ //if true, then move is made, old_x and old_y can be -1
         // Place the pieces on the board first
+        if(checkWinner(players[0]) || checkWinner(players[1])) {
+            System.out.println("THERES A WIN!");
+            haswinner = true;
+            return true;
+
+        }
+        int pieceNumber = player.getPieceNumber(old_x,old_y); // if -1, that means that you just placed one. else you slide one
+
         if (player.numOfPieces < 3){
             // Invalid case
-            if (gameBoard[x][y] > 0) {
+            if (gameBoard[y][x] != 0) { //something is already there
                 return false;
             }
 
             // Set the new position
-            gameBoard[x][y] = player.player_ID;
-            player.placePiece(pieceNumber, x ,y);
+            gameBoard[y][x] = player.player_ID;
+            player.placePiece(pieceNumber, x ,y); //what is piecenumber - piece
+            player.numOfPieces ++;
+            if(checkWinner(players[0]) || checkWinner(players[1])) {
+                System.out.println("THERES A WIN!");
+                haswinner = true;
+                return true;
+            }
+            return true;
+        }
+        //return false;
+        // Now, after putting all the pieces, we can make moves around the board
+        if(gameBoard[y][x]!=0) {
+            return false;
+        }
+        if(gameBoard[old_y][old_x]==0) {
+            return false;
+        }
+        if(pieceNumber==-1) {
+            return false;
+        }
+        Positions piece = player.getPiece(pieceNumber);
+        int pieceX = piece.getPosX();
+        int pieceY = piece.getPosY();
+        gameBoard[old_y][old_x] = EMPTY; // Free that spot - gameboard is x then y
+
+        // Find the move accordingly
+        //if (isValid(old_x, old_y, x, y)){
+            piece.setPosX(x);
+            piece.setPosY(y);
+            gameBoard[y][x] = player.player_ID;
+            //return true;
+        //}
+        if(checkWinner(players[0]) || checkWinner(players[1])) {
+            System.out.println("THERES A WIN!");
+            haswinner = true;
+            return true;
+        }
+        return true;
+
+
+    }
+    public boolean makeMove(Player player, int pieceNumber, int x, int y){ //if true, then move is made
+        // Place the pieces on the board first
+        if (player.numOfPieces < 3){
+            // Invalid case
+            if (gameBoard[y][x] != 0) { //something is already there
+                return false;
+            }
+
+            // Set the new position
+            gameBoard[y][x] = player.player_ID;
+            player.placePiece(pieceNumber, x ,y); //what is piecenumber - piece
             player.numOfPieces ++;
             return true;
         }
@@ -162,13 +230,13 @@ public class Game {
         Positions piece = player.getPiece(pieceNumber);
         int pieceX = piece.getPosX();
         int pieceY = piece.getPosY();
-        gameBoard[pieceX][pieceY] = EMPTY; // Free that spot
+        gameBoard[pieceY][pieceX] = EMPTY; // Free that spot
 
         // Find the move accordingly
         if (isValid(pieceX, pieceY, x, y)){
             piece.setPosX(x);
             piece.setPosY(y);
-            gameBoard[x][y] = player.player_ID;
+            gameBoard[y][x] = player.player_ID;
             return true;
         }
         return false;

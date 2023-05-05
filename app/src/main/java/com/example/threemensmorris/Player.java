@@ -1,4 +1,4 @@
-package com.example.threemensmorris;/*
+package com.meghana.mythreemensmorris;/*
                 Player class
                 ------------
       This class will have all the possible function related to how the user
@@ -7,7 +7,7 @@ package com.example.threemensmorris;/*
 
 import androidx.annotation.NonNull;
 
-import com.example.threemensmorris.Positions;
+import com.meghana.mythreemensmorris.Positions;
 
 
 public class Player {
@@ -115,14 +115,21 @@ public class Player {
      */
     public Positions getPiece(int pieceNumber){
         return pieces[pieceNumber];
-    }
+    } //position of the 1,2,3 pieces
 
     // Place a piece in the board
     public void placePiece(int pieceNumber, int x, int y){
         pieces[pieceNumber].setPosX(x);
         pieces[pieceNumber].setPosY(y);
     }
-
+    public int getPieceNumber(int x, int y) { //piece number
+         for(int i = 0; i < 3; i++) {
+             if(pieces[i].getPosX()==x && pieces[i].getPosY()==y) {
+                 return i;
+             }
+         }
+         return -1;
+    }
     // Display the positions of each piece
     public void infos(){
         System.out.println("There are " + numOfPieces + " on board for " + player_name);
